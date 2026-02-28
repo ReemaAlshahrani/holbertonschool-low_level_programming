@@ -1,1 +1,1 @@
-My first project on C variables and loops
+This directory contains tasks for C variables and loops
