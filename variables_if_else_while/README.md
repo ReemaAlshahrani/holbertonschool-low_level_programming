@@ -1,1 +1,1 @@
-This directory contains tasks for C variables and loops
+Project: C - Functions, nested loops
