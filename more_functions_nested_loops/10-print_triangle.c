@@ -1,14 +1,12 @@
 #include "main.h"
 
 /**
- * print_triangle - prints a triangle, followed by a new line
- * @size: size of the triangle
- *
- * Return: void
+ * print_square - prints a square, followed by a new line
+ * @size: size of the square
  */
-void print_triangle(int size)
+void print_square(int size)
 {
-	int row, column;
+	int i, j;
 
 	if (size <= 0)
 	{
@@ -16,13 +14,9 @@ void print_triangle(int size)
 	}
 	else
 	{
-		for (row = 1; row <= size; row++)
+		for (i = 0; i < size; i++)
 		{
-		for (column = 1; column <= (size - row); column++)
-			{
-				_putchar(' ');
-			}
-			for (column = 1; column <= row; column++)
+			for (j = 0; j < size; j++)
 			{
 				_putchar('#');
 			}
