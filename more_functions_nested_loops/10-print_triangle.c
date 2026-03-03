@@ -18,12 +18,12 @@ void print_triangle(int size)
 	{
 		for (row = 1; row <= size; row++)
 		{
-			/* طباعة المسافات: تكون (الحجم - رقم السطر الحالي) */
+		
 			for (column = 1; column <= (size - row); column++)
 			{
 				_putchar(' ');
 			}
-			/* طباعة الرموز: تكون مساوية لرقم السطر الحالي */
+			
 			for (column = 1; column <= row; column++)
 			{
 				_putchar('#');
