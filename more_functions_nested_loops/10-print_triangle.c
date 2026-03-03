@@ -1,10 +1,12 @@
 #include "main.h"
 
 /**
- * print_square - prints a square, followed by a new line
- * @size: size of the square
+ * print_triangle - prints a triangle, followed by a new line
+ * @size: size of the triangle
+ *
+ * Return: void
  */
-void print_square(int size)
+void print_triangle(int size)
 {
 	int i, j;
 
@@ -14,9 +16,13 @@ void print_square(int size)
 	}
 	else
 	{
-		for (i = 0; i < size; i++)
+		for (i = 1; i <= size; i++)
 		{
-			for (j = 0; j < size; j++)
+			for (j = 1; j <= (size - i); j++)
+			{
+				_putchar(' ');
+			}
+			for (j = 1; j <= i; j++)
 			{
 				_putchar('#');
 			}
