@@ -16,10 +16,10 @@ void print_diagsums(int *a, int size)
 
 	for (i = 0; i < size; i++)
 	{
-		/* Diagonal 1: (0,0), (1,1), (2,2)... index is i * size + i */
+		/* Calculate primary diagonal sum (row == column) */
 		sum1 += a[i * size + i];
 
-		/* Diagonal 2: (0, size-1), (1, size-2)... index is i * size + (size - 1 - i) */
+		/* Calculate secondary diagonal sum (col = size - 1 - row) */
 		sum2 += a[i * size + (size - 1 - i)];
 	}
 
