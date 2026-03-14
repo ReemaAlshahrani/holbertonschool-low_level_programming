@@ -4,8 +4,8 @@
 
 /**
  * main - Multiplies two numbers
- * @argc: The number of arguments passed to the program
- * @argv: The array of pointers to the arguments
+ * @argc: The number of arguments
+ * @argv: The array of arguments
  *
  * Return: 0 on success, 1 on error
  */
@@ -13,7 +13,8 @@ int main(int argc, char *argv[])
 {
 	int num1, num2, result;
 
-	/* Check if the correct number of arguments (program name + 2 numbers) is provided */
+	/* Check if the correct number of arguments (program name + 2 numbers) */
+	/* is provided */
 	if (argc != 3)
 	{
 		printf("Error\n");
