@@ -1,2 +1,3 @@
 # Recursion
-This is my recursion project for Holberton.
+
+This is a project about recursion in C.
