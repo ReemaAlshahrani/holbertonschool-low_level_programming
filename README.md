@@ -1,1 +1,2 @@
-# Holberton School Recursion Project
+# Recursion
+This is my recursion project for Holberton.
