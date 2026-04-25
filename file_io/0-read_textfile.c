@@ -2,58 +2,54 @@
 #include <stdlib.h>
 
 /**
+ * perform_io - Reads from file and writes to stdout.
+ * @fd: File descriptor.
+ * @buffer: The buffer to use.
+ * @letters: Number of letters to read.
+ * Return: Number of letters written, or 0 on failure.
+ */
+ssize_t perform_io(int fd, char *buffer, size_t letters)
+{
+	ssize_t n_read, n_wrote;
+
+	n_read = read(fd, buffer, letters);
+	if (n_read == -1)
+	{
+		return (0);
+	}
+	n_wrote = write(STDOUT_FILENO, buffer, n_read);
+	if (n_wrote == -1 || n_wrote != n_read)
+	{
+		return (0);
+	}
+	return (n_wrote);
+}
+
+/**
  * read_textfile - Reads a text file and prints it to POSIX standard output.
- * @filename: A pointer to the name of the file.
- * @letters: The number of letters the function should read and print.
- *
- * Return: The actual number of bytes read and printed.
- * 0 if the file cannot be opened or read,
- * 0 if filename is NULL,
- * 0 if write fails or does not write the expected amount of bytes.
+ * @filename: Name of the file.
+ * @letters: Number of letters to read and print.
+ * Return: Actual number of letters read and printed, 0 on failure.
  */
 ssize_t read_textfile(const char *filename, size_t letters)
 {
 	int fd;
-	ssize_t n_read, n_wrote;
+	ssize_t n;
 	char *buffer;
 
 	if (filename == NULL)
 		return (0);
-
-	/* Allocate memory for the buffer based on the number of letters */
 	buffer = malloc(sizeof(char) * letters);
 	if (buffer == NULL)
 		return (0);
-
-	/* Open the file in read-only mode */
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
 	{
 		free(buffer);
 		return (0);
 	}
-
-	/* Read from the file descriptor into the buffer */
-	n_read = read(fd, buffer, letters);
-	if (n_read == -1)
-	{
-		free(buffer);
-		close(fd);
-		return (0);
-	}
-
-	/* Write the contents of the buffer to the standard output */
-	n_wrote = write(STDOUT_FILENO, buffer, n_read);
-	if (n_wrote == -1 || n_wrote != n_read)
-	{
-		free(buffer);
-		close(fd);
-		return (0);
-	}
-
-	/* Clean up resources */
+	n = perform_io(fd, buffer, letters);
 	free(buffer);
 	close(fd);
-
-	return (n_wrote);
+	return (n);
 }
